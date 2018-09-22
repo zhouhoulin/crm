@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.java.crm.domain.BaseDict" table="base_dict" schema="crm">
+        <id name="dictId" column="dict_id">
+            <generator class="uuid"/>
+        </id>
+        <property name="dictTypeCode" column="dict_type_code"/>
+        <property name="dictTypeName" column="dict_type_name"/>
+        <property name="dictItemName" column="dict_item_name"/>
+        <property name="dictItemCode" column="dict_item_code"/>
+        <property name="dictSort" column="dict_sort"/>
+        <property name="dictEnable" column="dict_enable"/>
+        <property name="dictMemo" column="dict_memo"/>
+    </class>
+</hibernate-mapping>

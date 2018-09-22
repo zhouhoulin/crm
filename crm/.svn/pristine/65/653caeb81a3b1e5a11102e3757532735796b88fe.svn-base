@@ -1,0 +1,44 @@
+package com.java.crm.web.action;
+
+import com.java.crm.domain.User;
+import com.java.crm.service.UserService;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+/**
+ * 用户管理的Action类
+ */
+public class UserAction extends ActionSupport implements ModelDriven {
+    //模型驱动使用的对象
+    private User user = new User();
+
+    @Override
+    public Object getModel() {
+        return user;
+    }
+
+    //注入service
+    private UserService userService;
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    /**
+     * 用户注册的方法:regist
+     */
+    public String regist(){
+        userService.regist(user);
+        return NONE;
+    }
+
+    /**
+     * 用户登录的方法 login
+     * @return
+     */
+    public String login(){
+        //调用业务层查询用户
+        User existUser = userService.login(user);
+        return NONE;
+    }
+}

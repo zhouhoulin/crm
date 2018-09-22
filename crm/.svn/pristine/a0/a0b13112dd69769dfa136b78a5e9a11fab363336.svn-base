@@ -1,0 +1,16 @@
+package com.java.crm.dao.impl;
+
+import com.java.crm.dao.UserDao;
+import com.java.crm.domain.User;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
+/**
+ * 用户管理的Dao的实现类
+ */
+public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
+
+    @Override
+    public void save(User user) {
+        this.getHibernateTemplate().save(user);
+    }
+}

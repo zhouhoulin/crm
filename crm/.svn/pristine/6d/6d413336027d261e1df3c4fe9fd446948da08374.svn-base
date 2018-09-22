@@ -1,0 +1,11 @@
+package com.java.crm.dao;
+
+import com.java.crm.domain.User;
+
+/**
+ * 用户管理的Dao接口
+ */
+public interface UserDao {
+
+    void save(User user);
+}

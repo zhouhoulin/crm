@@ -1,0 +1,44 @@
+package com.java.crm.service.impl;
+
+import com.java.crm.dao.UserDao;
+import com.java.crm.domain.User;
+import com.java.crm.service.UserService;
+import com.java.crm.utils.MD5Utils;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+@Transactional
+public class UserServiceImpl implements UserService {
+    //注入Dao
+    private UserDao userDao;
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    @Override
+    public void regist(User user) {
+        //对密码进行加密处理
+        user.setUserPassword(MD5Utils.md5(user.getUserPassword()));
+        user.setUserState("1");
+        //调用Dao
+        userDao.save(user);
+    }
+
+    /**
+     * 业务层登录的方法
+     * @param user
+     * @return
+     */
+    @Override
+    public User login(User user) {
+        user.setUserPassword(MD5Utils.md5(user.getUserPassword()));
+        return userDao.login(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userDao.findAll();
+    }
+}
